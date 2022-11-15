@@ -1,0 +1,7 @@
+image:
+  file: .gitpod.Dockerfile
+tasks:
+  - init: rm -rf Application-Stateful Installation Resources_Management CICD Job-CronJob Network Pratique-StackElastic WebUI Helm Logs Operations Pratique-VotingApp Security Ingress Monitoring Operators RBAC ServiceMesh
+vscode:
+  extensions:
+    - ms-kubernetes-tools.vscode-kubernetes-tools

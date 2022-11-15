@@ -1,0 +1,68 @@
+Cluster k8s 
+-----------
+Ensemble de machines(Node) sur lesquels les application seront déployés, 
+Nodde Master(gestion du clustre/ garant l'état du cluster) et worker(tourner les applications)
+un Master expose API serveur point d'entrée du cluster
+
+
+Pods
+-----
+La plus petite unité applicative qui tourne sur cluster
+Un ensemble de container qui partage une stak réseau et du staockage
+Les Pods sont contenu dans des Nodes
+Le nombre de réplica d'un Pods c'est le nombre d'instance de ce Pods sur le cluster
+c'est un service meier ou technique d'une applicaion
+
+
+Deployment
+-----------
+Permet de gérér un ensemble de Pods identiques, les créer et les mette à jours
+
+Service
+--------
+Regroupement de Pods similaires
+Elle va définir des règles au niveau réseau pour accéder à des Pods et faire de la répartition de charge
+Permet d'exposer des Pods de façon à les rendre visible depuis l'intérieur ou l'xtérieur du cluster
+
+kubectl
+----------
+binaire utilisé pour communiquer avec k8s par envoie requette https API server
+
+
+Commandes POD
+--------------
+
+kubectl get nodes
+
+lister les pods:
+kubectl get pods
+
+lancement Pods:
+kubevtl create -f POD_SPECIFICATION.yaml
+
+description : 
+kubectl describe pod POD_NAME ou po/POD_NAME
+
+logs du Pod
+kubectl logs POD_NAME [-c CONTAINER_NAME]
+
+lancer une commande
+kubectl exec POD_NAME [-c CONTAINER_NAME] --COMMAND
+
+supprission
+kubectl  delete pod POD_NAME 
+
+Publier le port d'un pod sur la machine de hote
+kubectl  port-forward POD_NAME/SRVICE_NAME HOST_PORT:CONTAINER_PORT
+
+Scheduling:
+------------
+séletion d'un Node sur lequel le Pod sera déployé
+effectué par le composant kube-scheduling
+
+kubectl run www --image=nginx:1.16-alpine --restart=Never
+kubectl describe pod www
+
+label
+------
+kubectl label nodes nodes nodes1 disktype=ssd
